@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+     {{>headerlinks}}
+
+ 
+</head>
+
+<body>
+    {{>navbar}}
+   
+    <!-- main header -->
+    <div class="container-fluid main_header">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto ">
+            
+            <div class="main_content">
+                <form class="temp_form">
+                    <input type="text" id="cityname" placeholder="Enter City Name..">
+                    <input type="submit" value="search" id="submitbtn">
+                </form>          
+            </div>
+
+            <div class="tempinfo">
+                  <div class="top_layer">
+                    <p id="day">Tuesday</p>
+                    <p id="today_date">13 OCT</p>
+                  </div>
+
+                  <div class="main_layer">
+                      <p id="city_name"></p>
+                      <div class="middle_layer data_hide">
+                          <p id="temp"><span id="temp_val">0</span><sup>o</sup>C</p>
+                          <p id="temp_status"><i class="fa-solid fa-cloud"></i></p>
+                      </div>
+                  </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- footer code -->
+
+   {{>footer}}
+
+   <script>
+    // Define the global apiKey variable using Handlebars syntax
+    const apiKey = "{{ apiKey }}";
+  </script>
+   
+   <script src="js/main.js"></script>
+
+   <script>
+    
+
+      const getcurrentday=()=>{
+            var weekday=new Array(7);
+            weekday[0]="Sunday";
+            weekday[1]="Monday";
+            weekday[2]="Tuesday";
+            weekday[3]="Wednesday";
+            weekday[4]="Thursday";
+            weekday[5]="Friday";
+            weekday[6]="Saturday";
+
+            let currenttime=new Date();
+            let days=weekday[currenttime.getDay()];
+            let day=document.getElementById("day");
+            day.innerText=days;
+          };
+
+           const getcurrentdate=()=>{
+            var months=["JAN","FEB","MAR","APR","MAY","JUNE","JULY","AUG","SEPT","OCT","NOV","DEC"]
+            var now=new Date();
+            var month=months[now.getMonth()];
+            var date=now.getDate();
+            let today_date=document.getElementById("today_date");
+            today_date.innerText=` ${date }  ${ month} `
+            
+
+         
+
+          };
+
+          getcurrentday();
+          getcurrentdate();
+   </script>
+</body>
+
+</html>
